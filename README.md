@@ -8,6 +8,7 @@ Create a simple interface you can use to add and categorize your expenses. Gener
 ### TO-DO list
   - [ ] Decide on what framework to use - WPF for native, ASP.NET for web, Xamarin for mobile
   - [ ] Save the info of each expense
+  - [ ] Create the database for the user automatically
   - [ ] Have many sorting options when displaying the expenses
 
 
