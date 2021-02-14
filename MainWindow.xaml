@@ -1,0 +1,16 @@
+﻿<Window x:Class="Expense_Tracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Expense_Tracker"
+        mc:Ignorable="d"
+        Title="Expense Tracker" Height="450" Width="800">
+    <Grid>
+        <DockPanel x:Name="dockPanelSide" Background="Gray" HorizontalAlignment="Left" LastChildFill="False" Width="170" Margin="0,55,0,0"/>
+        <DockPanel x:Name="dockPanelTop" Background="DarkGray" LastChildFill="False" Height="55" VerticalAlignment="Top">
+            <Rectangle Fill="Transparent" Width="100" MouseEnter="TopLeftRect_MouseEnter" StrokeThickness="0" />
+        </DockPanel>
+        <StackPanel x:Name="stackPanelParent" Background="Blue" Margin="170,55,0,0"/>
+    </Grid>
+</Window>
