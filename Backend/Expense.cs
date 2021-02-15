@@ -13,6 +13,7 @@ namespace Expense_Tracker.Backend
         private Int16 month;
         private Int16 category;
         private Int16 hour;
+        private string details;
         #endregion
 
         #region Properties - Getters
@@ -120,19 +121,34 @@ namespace Expense_Tracker.Backend
                     return "Night";
             }
         }
+
+        public string Details { get { return this.details; } }
         #endregion
 
         #region Properties - Validation Checks
-        public bool NameIsValid { get { return !this.name.Equals(string.Empty); } }
-        public bool CostIsValid { get { return this.cost > 0; } }
-        public bool DayIsValid { get { return this.day > 0 && this.day <= 7; } }
-        public bool DayOfMonthIsValid { get { return this.dayOfMonth > 0 && this.dayOfMonth <= 31; } }
-        public bool MonthIsValid { get { return this.month > 0 && this.month <= 12; } }
-        public bool CategoryIsValid { get { return this.category > 0 && this.category <= 8; } }
-        public bool HourIsValid { get { return this.hour > 0 && this.hour <= 23; } }
+        public bool HasValidName { get { return !this.name.Equals(string.Empty); } }
+        public bool HasValidCost { get { return this.cost > 0; } }
+        public bool HasValidDay { get { return this.day > 0 && this.day <= 7; } }
+        public bool HasValidDayOfMonth { get { return this.dayOfMonth > 0 && this.dayOfMonth <= 31; } }
+        public bool HasValidMonth { get { return this.month > 0 && this.month <= 12; } }
+        public bool HasValidCategory { get { return this.category > 0 && this.category <= 8; } }
+        public bool HasValidHour { get { return this.hour > 0 && this.hour <= 23; } }
         #endregion
 
         #region Constructors
+        public Expense(uint id, string name, float cost, Int16 day, Int16 dayOfMonth, Int16 month, Int16 category, Int16 hour, string details)
+        {
+            this.id = id;
+            this.name = name;
+            this.cost = cost;
+            this.day = day;
+            this.dayOfMonth = dayOfMonth;
+            this.month = month;
+            this.category = category;
+            this.hour = hour;
+            this.details = details;
+        }
+
         public Expense(uint id, string name, float cost, Int16 day, Int16 dayOfMonth, Int16 month, Int16 category, Int16 hour)
         {
             this.id = id;
@@ -143,6 +159,20 @@ namespace Expense_Tracker.Backend
             this.month = month;
             this.category = category;
             this.hour = hour;
+            this.details = "-";
+        }
+
+        public Expense(uint id, string name, float cost, Int16 day, Int16 dayOfMonth, Int16 month, Int16 hour, string details)
+        {
+            this.id = id;
+            this.name = name;
+            this.cost = cost;
+            this.day = day;
+            this.dayOfMonth = dayOfMonth;
+            this.month = month;
+            this.category = 8;
+            this.hour = hour;
+            this.details = details;
         }
 
         public Expense(uint id, string name, float cost, Int16 day, Int16 dayOfMonth, Int16 month, Int16 hour)
@@ -155,6 +185,7 @@ namespace Expense_Tracker.Backend
             this.month = month;
             this.category = 8;
             this.hour = hour;
+            this.details = "-";
         }
         #endregion
     }
