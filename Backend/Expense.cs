@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Expense_Tracker.Backend
 {
@@ -129,11 +125,11 @@ namespace Expense_Tracker.Backend
         #region Properties - Validation Checks
         public bool NameIsValid { get { return !this.name.Equals(string.Empty); } }
         public bool CostIsValid { get { return this.cost > 0; } }
-        public bool DayIsValid { get { return this.day > 0 && this.day < 8; } }
-        public bool DayOfMonthIsValid { get { return this.dayOfMonth > 0 && this.dayOfMonth < 32; } }
-        public bool MonthIsValid { get { return this.month > 0 && this.month < 13; } }
-        public bool CategoryIsValid { get { return this.category > 0 && this.category < 9; } }
-        public bool HourIsValid { get { return this.hour > 0 && this.hour < 25; } }
+        public bool DayIsValid { get { return this.day > 0 && this.day <= 7; } }
+        public bool DayOfMonthIsValid { get { return this.dayOfMonth > 0 && this.dayOfMonth <= 31; } }
+        public bool MonthIsValid { get { return this.month > 0 && this.month <= 12; } }
+        public bool CategoryIsValid { get { return this.category > 0 && this.category <= 8; } }
+        public bool HourIsValid { get { return this.hour > 0 && this.hour <= 23; } }
         #endregion
 
         #region Constructors
