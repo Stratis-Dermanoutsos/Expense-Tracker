@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Expense_Tracker.Frontend;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,12 +26,20 @@ namespace Expense_Tracker
             InitializeComponent();
 
             HideSidePanel();
+
+            frameParent.Content = new AddExpensePage();
         }
+
 
         #region Side Panel Visibility
         private void TopLeftRect_MouseEnter(object sender, MouseEventArgs e)
         {
             ShowSidePanel();
+        }
+
+        private void stackPanelParent_MouseEnter(object sender, MouseEventArgs e)
+        {
+            HideSidePanel();
         }
 
         private void HideSidePanel()

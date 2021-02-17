@@ -7,10 +7,15 @@
         mc:Ignorable="d"
         Title="Expense Tracker" Height="450" Width="800">
     <Grid>
-        <DockPanel x:Name="dockPanelSide" Background="Gray" HorizontalAlignment="Left" LastChildFill="False" Width="170" Margin="0,55,0,0"/>
+        <DockPanel x:Name="dockPanelSide" Background="Gray" HorizontalAlignment="Left" LastChildFill="False" Width="170" Margin="0,55,0,0" >
+        </DockPanel>
         <DockPanel x:Name="dockPanelTop" Background="DarkGray" LastChildFill="False" Height="55" VerticalAlignment="Top">
             <Rectangle Fill="Transparent" Width="100" MouseEnter="TopLeftRect_MouseEnter" StrokeThickness="0" />
         </DockPanel>
-        <StackPanel x:Name="stackPanelParent" Background="Blue" Margin="170,55,0,0"/>
+        <StackPanel x:Name="stackPanelParent" Margin="170,55,0,0" MouseEnter="stackPanelParent_MouseEnter" >
+            <Frame x:Name="frameParent" >
+                
+            </Frame>
+        </StackPanel>
     </Grid>
 </Window>
