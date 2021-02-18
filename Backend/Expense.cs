@@ -8,11 +8,11 @@ namespace Expense_Tracker.Backend
         private uint id;
         private string name;
         private float cost;
-        private Int16 day;
-        private Int16 dayOfMonth;
-        private Int16 month;
-        private Int16 category;
-        private Int16 hour;
+        private short day;
+        private short dayOfMonth;
+        private short month;
+        private short category;
+        private short hour;
         private string details;
         #endregion
 
@@ -45,7 +45,7 @@ namespace Expense_Tracker.Backend
             }
         }
 
-        public Int16 DayOfMonth { get { return this.dayOfMonth; } }
+        public short DayOfMonth { get { return this.dayOfMonth; } }
 
         public string Month
         {
@@ -136,7 +136,7 @@ namespace Expense_Tracker.Backend
         #endregion
 
         #region Constructors
-        public Expense(uint id, string name, float cost, Int16 day, Int16 dayOfMonth, Int16 month, Int16 category, Int16 hour, string details)
+        public Expense(uint id, string name, float cost, short day, short dayOfMonth, short month, short category, short hour, string details)
         {
             this.id = id;
             this.name = name;
@@ -149,7 +149,7 @@ namespace Expense_Tracker.Backend
             this.details = details;
         }
 
-        public Expense(uint id, string name, float cost, Int16 day, Int16 dayOfMonth, Int16 month, Int16 category, Int16 hour)
+        public Expense(uint id, string name, float cost, short day, short dayOfMonth, short month, short category, short hour)
         {
             this.id = id;
             this.name = name;
@@ -162,7 +162,7 @@ namespace Expense_Tracker.Backend
             this.details = "-";
         }
 
-        public Expense(uint id, string name, float cost, Int16 day, Int16 dayOfMonth, Int16 month, Int16 hour, string details)
+        public Expense(uint id, string name, float cost, short day, short dayOfMonth, short month, short hour, string details)
         {
             this.id = id;
             this.name = name;
@@ -175,7 +175,7 @@ namespace Expense_Tracker.Backend
             this.details = details;
         }
 
-        public Expense(uint id, string name, float cost, Int16 day, Int16 dayOfMonth, Int16 month, Int16 hour)
+        public Expense(uint id, string name, float cost, short day, short dayOfMonth, short month, short hour)
         {
             this.id = id;
             this.name = name;
