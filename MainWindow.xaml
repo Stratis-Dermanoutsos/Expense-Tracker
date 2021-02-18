@@ -12,10 +12,6 @@
         <DockPanel x:Name="dockPanelTop" Background="DarkGray" LastChildFill="False" Height="55" VerticalAlignment="Top">
             <Rectangle Fill="Transparent" Width="100" MouseEnter="TopLeftRect_MouseEnter" StrokeThickness="0" />
         </DockPanel>
-        <StackPanel x:Name="stackPanelParent" Margin="170,55,0,0" MouseEnter="stackPanelParent_MouseEnter" >
-            <Frame x:Name="frameParent" >
-                
-            </Frame>
-        </StackPanel>
+        <Frame x:Name="frameParent" Background="AliceBlue" Margin="170,55,0,0" MouseEnter="framePanelParent_MouseEnter"/>
     </Grid>
 </Window>

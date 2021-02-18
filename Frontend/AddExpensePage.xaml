@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Expense_Tracker.Frontend"
       mc:Ignorable="d" 
-      Height="Auto" Width="Auto"
+      Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0"
       Title="AddExpensePage" d:DesignWidth="695.62" d:DesignHeight="345.235">
 
     <Grid Background="#FFC91414" Margin="0" >

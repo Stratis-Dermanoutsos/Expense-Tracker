@@ -37,7 +37,7 @@ namespace Expense_Tracker
             ShowSidePanel();
         }
 
-        private void stackPanelParent_MouseEnter(object sender, MouseEventArgs e)
+        private void framePanelParent_MouseEnter(object sender, MouseEventArgs e)
         {
             HideSidePanel();
         }
@@ -46,12 +46,12 @@ namespace Expense_Tracker
         {
             dockPanelSide.Visibility = Visibility.Collapsed;
 
-            stackPanelParent.Margin = new Thickness(0, 55, 0, 0);
+            frameParent.Margin = new Thickness(0, 55, 0, 0);
         }
 
         private void ShowSidePanel()
         {
-            stackPanelParent.Margin = new Thickness(170, 55, 0, 0);
+            frameParent.Margin = new Thickness(170, 55, 0, 0);
 
             dockPanelSide.Visibility = Visibility.Visible;
         }
