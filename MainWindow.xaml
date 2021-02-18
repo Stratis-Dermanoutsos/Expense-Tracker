@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Expense_Tracker"
         mc:Ignorable="d"
-        Title="Expense Tracker" Height="450" Width="800">
+        Title="Expense Tracker" Height="500" MinHeight="500" Width="850" MinWidth="850" WindowStartupLocation="CenterScreen">
     <Grid>
         <DockPanel x:Name="dockPanelSide" Background="Gray" HorizontalAlignment="Left" LastChildFill="False" Width="170" Margin="0,55,0,0" >
         </DockPanel>
