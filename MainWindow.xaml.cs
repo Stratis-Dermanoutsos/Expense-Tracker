@@ -30,7 +30,6 @@ namespace Expense_Tracker
             frameParent.Content = new AddExpensePage();
         }
 
-
         #region Side Panel Visibility
         private void TopLeftRect_MouseEnter(object sender, MouseEventArgs e)
         {

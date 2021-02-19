@@ -1,17 +1,13 @@
-﻿using System;
-
-namespace Expense_Tracker.Backend
+﻿namespace Expense_Tracker.Backend
 {
     class Expense
     {
         #region Member variables
         private uint id;
         private string name;
-        private float cost;
-        private short day;
-        private short dayOfMonth;
-        private short month;
-        private short category;
+        private double cost;
+        private string date;
+        private string category;
         private short hour;
         private string details;
         #endregion
@@ -20,90 +16,11 @@ namespace Expense_Tracker.Backend
         public uint Id { get { return this.id; } }
         public string Name { get { return this.name; } }
 
-        public float Cost { get { return this.cost; } }
+        public double Cost { get { return this.cost; } }
 
-        public string Day
-        {
-            get
-            {
-                switch (this.day) {
-                    case 1:
-                        return "Sunday";
-                    case 2:
-                        return "Monday";
-                    case 3:
-                        return "Tuesday";
-                    case 4:
-                        return "Wednesday";
-                    case 5:
-                        return "Thursday";
-                    case 6:
-                        return "Friday";
-                    default:
-                        return "Saturday";
-                }
-            }
-        }
+        public string Date { get { return this.date; } }
 
-        public short DayOfMonth { get { return this.dayOfMonth; } }
-
-        public string Month
-        {
-            get
-            {
-                switch (this.month) {
-                    case 1:
-                        return "January";
-                    case 2:
-                        return "February";
-                    case 3:
-                        return "March";
-                    case 4:
-                        return "April";
-                    case 5:
-                        return "May";
-                    case 6:
-                        return "June";
-                    case 7:
-                        return "July";
-                    case 8:
-                        return "August";
-                    case 9:
-                        return "September";
-                    case 10:
-                        return "October";
-                    case 11:
-                        return "November";
-                    default:
-                        return "December";
-                }
-            }
-        }
-
-        public string Category
-        {
-            get
-            {
-                switch (this.category) {
-                    case 1:
-                        return "health care";
-                    case 2:
-                        return "food";
-                    case 3:
-                        return "drink";
-                    case 4:
-                        return "entertainment";
-                    case 5:
-                        return "car";
-                    case 6:
-                        return "gift";
-                    case 7:
-                        return "pet";
-                    default:
-                        return "other";
-                }
-            }
-        }
+        public string Category { get { return this.category; } }
 
         public string Hour
         {
@@ -128,64 +45,62 @@ namespace Expense_Tracker.Backend
         #region Properties - Validation Checks
         public bool HasValidName { get { return !this.name.Equals(string.Empty); } }
         public bool HasValidCost { get { return this.cost > 0; } }
-        public bool HasValidDay { get { return this.day > 0 && this.day <= 7; } }
-        public bool HasValidDayOfMonth { get { return this.dayOfMonth > 0 && this.dayOfMonth <= 31; } }
-        public bool HasValidMonth { get { return this.month > 0 && this.month <= 12; } }
-        public bool HasValidCategory { get { return this.category > 0 && this.category <= 8; } }
-        public bool HasValidHour { get { return this.hour > 0 && this.hour <= 23; } }
+        public bool HasValidHour { get { return this.hour >= 0 && this.hour <= 23; } }
         #endregion
 
         #region Constructors
-        public Expense(uint id, string name, float cost, short day, short dayOfMonth, short month, short category, short hour, string details)
+        public Expense(uint id, string name, double cost, string date, string category, short hour, string details)
         {
             this.id = id;
             this.name = name;
             this.cost = cost;
-            this.day = day;
-            this.dayOfMonth = dayOfMonth;
-            this.month = month;
+            this.date = date;
             this.category = category;
             this.hour = hour;
             this.details = details;
         }
 
-        public Expense(uint id, string name, float cost, short day, short dayOfMonth, short month, short category, short hour)
+        public Expense(uint id, string name, double cost, string date, string category, short hour)
         {
             this.id = id;
             this.name = name;
             this.cost = cost;
-            this.day = day;
-            this.dayOfMonth = dayOfMonth;
-            this.month = month;
+            this.date = date;
             this.category = category;
             this.hour = hour;
             this.details = "-";
         }
 
-        public Expense(uint id, string name, float cost, short day, short dayOfMonth, short month, short hour, string details)
+        public Expense(uint id, string name, double cost, string date, short hour, string details)
         {
             this.id = id;
             this.name = name;
             this.cost = cost;
-            this.day = day;
-            this.dayOfMonth = dayOfMonth;
-            this.month = month;
-            this.category = 8;
+            this.date = date;
+            this.category = "other";
             this.hour = hour;
             this.details = details;
         }
 
-        public Expense(uint id, string name, float cost, short day, short dayOfMonth, short month, short hour)
+        public Expense(uint id, string name, double cost, string date, short hour)
         {
             this.id = id;
             this.name = name;
             this.cost = cost;
-            this.day = day;
-            this.dayOfMonth = dayOfMonth;
-            this.month = month;
-            this.category = 8;
+            this.date = date;
+            this.category = "other";
             this.hour = hour;
             this.details = "-";
+        }
+        #endregion
+
+        #region Methods
+        public override string ToString()
+        {
+            string myString = string.Format("{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}",
+                this.id, this.name, this.cost, this.date, this.category, this.hour, this.details);
+
+            return myString;
         }
         #endregion
     }
