@@ -1,0 +1,14 @@
+﻿<Page x:Class="Expense_Tracker.Frontend.ShowAllPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Expense_Tracker.Frontend"
+      mc:Ignorable="d" 
+      Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0"
+      Title="ShowAllPage"  d:DesignWidth="695.62" d:DesignHeight="345.235">
+
+    <Grid Background="White" Margin="0">
+        
+    </Grid>
+</Page>
