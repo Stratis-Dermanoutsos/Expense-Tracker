@@ -12,7 +12,7 @@ namespace Expense_Tracker
 
             HideSidePanel();
 
-            frameParent.Content = new AddExpensePage();
+            frameParent.Content = new ShowAllPage();
         }
 
         #region Side Panel Visibility

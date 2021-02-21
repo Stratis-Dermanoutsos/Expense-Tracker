@@ -22,22 +22,7 @@
 
         public string Category { get { return this.category; } }
 
-        public string Hour
-        {
-            get
-            {
-                if (this.hour >= 6 && this.hour < 12)
-                    return "Morning";
-                else if (this.hour == 12)
-                    return "Noon";
-                else if (this.hour > 12 && this.hour < 18)
-                    return "Afternoon";
-                else if (this.hour >= 18 && this.hour < 21)
-                    return "Evening";
-                else
-                    return "Night";
-            }
-        }
+        public short Hour { get { return this.hour; } }
 
         public string Details { get { return this.details; } }
         #endregion

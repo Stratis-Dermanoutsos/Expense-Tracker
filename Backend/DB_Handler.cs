@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SQLite;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Expense_Tracker.Backend
 {
@@ -16,7 +17,7 @@ namespace Expense_Tracker.Backend
             double newCost = Math.Round(newExpense.Cost, 2);
             string newDate = newExpense.Date;
             string newCategory = newExpense.Category;
-            string newHour = newExpense.Hour;
+            short newHour = newExpense.Hour;
             string details = newExpense.Details;
 
             try {
@@ -67,6 +68,34 @@ namespace Expense_Tracker.Backend
                     MessageBox.Show(ex.Message);
                     return 0;
                 }
+            }
+        }
+
+        public static void GetAllExpenses(ListView myList)
+        {
+            try {
+                using (SQLiteConnection con = new SQLiteConnection(connectionString)) {
+                    con.Open();
+
+                    string query = "SELECT * FROM expense";
+                    using (SQLiteCommand command = new SQLiteCommand(query, con)) {
+                        using (SQLiteDataReader reader = command.ExecuteReader()) {
+                            while (reader.Read()) {
+                                myList.Items.Add(new Expense(
+                                        uint.Parse(reader[0].ToString()),
+                                        reader[1].ToString(),
+                                        double.Parse(reader[2].ToString()),
+                                        reader[3].ToString(),
+                                        reader[4].ToString(),
+                                        short.Parse(reader[5].ToString()),
+                                        reader[6].ToString()));
+                            }
+                        }
+                    }
+                    con.Dispose();
+                }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
         #endregion

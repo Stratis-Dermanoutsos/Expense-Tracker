@@ -9,6 +9,19 @@
       Title="ShowAllPage"  d:DesignWidth="695.62" d:DesignHeight="345.235">
 
     <Grid Background="White" Margin="0">
-        
+        <ListView x:Name="listViewExpenses" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="10,10,0,10" Width="500" FontWeight="Bold">
+            <ListView.View>
+                <GridView AllowsColumnReorder="False">
+                    <GridViewColumn Header="Id" Width="30" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Name" Width="110" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Cost" Width="50" DisplayMemberBinding="{Binding Cost}"/>
+                    <GridViewColumn Header="Date" Width="80" DisplayMemberBinding="{Binding Date}"/>
+                    <GridViewColumn Header="Category" Width="80" DisplayMemberBinding="{Binding Category}"/>
+                    <GridViewColumn Header="Hour" Width="50" DisplayMemberBinding="{Binding Hour}"/>
+                    <GridViewColumn Header="Details" Width="90" DisplayMemberBinding="{Binding Details}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Page>
