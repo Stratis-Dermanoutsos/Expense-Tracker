@@ -1,5 +1,6 @@
 ﻿using Expense_Tracker.Backend;
 using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,9 +11,23 @@ namespace Expense_Tracker.Frontend
     /// </summary>
     public partial class AddExpensePage : Page
     {
+        Expense currentExpense;
+
+        public AddExpensePage(Expense expToEdit)
+        {
+            InitializeComponent();
+
+            this.currentExpense = expToEdit;
+
+            DefaultDate();
+            DefaultRest();
+        }
+
         public AddExpensePage()
         {
             InitializeComponent();
+
+            this.currentExpense = null;
 
             DefaultDate();
             DefaultRest();
@@ -23,12 +38,12 @@ namespace Expense_Tracker.Frontend
         {
             try {
                 string date = string.Format("{0}-{1}-{2}",
-                    ((ComboBoxItem)comboBoxDay.SelectedItem).Content, 
-                    ((ComboBoxItem)comboBoxMonth.SelectedItem).Content, 
-                    ((ComboBoxItem)comboBoxYear.SelectedItem).Content);
+                    int.Parse(((ComboBoxItem)comboBoxDay.SelectedItem).Content.ToString()).ToString("00"),
+                    int.Parse(((ComboBoxItem)comboBoxMonth.SelectedItem).Content.ToString()).ToString("00"),
+                    int.Parse(((ComboBoxItem)comboBoxYear.SelectedItem).Content.ToString()).ToString("00"));
 
                 Expense myExpense = new Expense(
-                    DB_Handler.Count,
+                    (this.currentExpense == null) ? DB_Handler.Count : this.currentExpense.Id,
                     textBoxName.Text,
                     float.Parse(textBoxCost.Text),
                     date,
@@ -38,9 +53,13 @@ namespace Expense_Tracker.Frontend
                     );
 
                 if (myExpense.HasValidCost && myExpense.HasValidName && myExpense.HasValidHour) {
-                    if (DB_Handler.SaveExpense(myExpense))
+                    bool result = (this.currentExpense == null) ? DB_Handler.SaveExpense(myExpense) : DB_Handler.UpdateExpense(myExpense);
+                    if (result) {
                         MessageBox.Show("Expense saved successfully!");
-                    else
+
+                        MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+                        mainWindow.OpenPage(new ShowAllPage());
+                    } else
                         MessageBox.Show("There was a problem saving the expense!");
                 } else {
                     if (!myExpense.HasValidCost)
@@ -65,29 +84,54 @@ namespace Expense_Tracker.Frontend
         #region Reset fields
         private void DefaultDate()
         {
-            DateTime now = DateTime.Now;
-            comboBoxDay.SelectedIndex = now.Day - 1;
-            comboBoxMonth.SelectedIndex = now.Month - 1;
-            bool itemExists = false;
-            int i = 0;
-            foreach (ComboBoxItem cbi in comboBoxYear.Items) {
-                itemExists = cbi.Content.ToString().Equals(now.Year.ToString());
-                if (itemExists) {
-                    comboBoxYear.SelectedIndex = i;
-                    break;
-                } else {
-                    i++;
+            if (this.currentExpense == null) {
+                DateTime now = DateTime.Now;
+                comboBoxDay.SelectedIndex = now.Day - 1;
+                comboBoxMonth.SelectedIndex = now.Month - 1;
+                bool itemExists = false;
+                int i = 0;
+                foreach (ComboBoxItem cbi in comboBoxYear.Items) {
+                    itemExists = cbi.Content.ToString().Equals(now.Year.ToString());
+                    if (itemExists) {
+                        comboBoxYear.SelectedIndex = i;
+                        break;
+                    } else {
+                        i++;
+                    }
+                }
+            } else {
+                DateTime then = DateTime.ParseExact(this.currentExpense.Date, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+                comboBoxDay.SelectedIndex = then.Day - 1;
+                comboBoxMonth.SelectedIndex = then.Month - 1;
+                bool itemExists = false;
+                int i = 0;
+                foreach (ComboBoxItem cbi in comboBoxYear.Items) {
+                    itemExists = cbi.Content.ToString().Equals(then.Year.ToString());
+                    if (itemExists) {
+                        comboBoxYear.SelectedIndex = i;
+                        break;
+                    } else {
+                        i++;
+                    }
                 }
             }
         }
 
         private void DefaultRest()
         {
-            textBoxName.Text = "Expense name";
-            textBoxCost.Text = "13.20";
-            comboBoxCategory.SelectedIndex = comboBoxCategory.Items.Count - 1;
-            textBoxHour.Text = "16";
-            textBoxDetails.Text = "-";
+            if (this.currentExpense == null) {
+                textBoxName.Text = "Expense name";
+                textBoxCost.Text = "13.20";
+                comboBoxCategory.SelectedIndex = comboBoxCategory.Items.Count - 1;
+                textBoxHour.Text = "16";
+                textBoxDetails.Text = "-";
+            } else {
+                textBoxName.Text = this.currentExpense.Name;
+                textBoxCost.Text = this.currentExpense.Cost.ToString();
+                comboBoxCategory.SelectedIndex = this.currentExpense.CategoryIndex;
+                textBoxHour.Text = this.currentExpense.Hour.ToString();
+                textBoxDetails.Text = this.currentExpense.Details;
+            }
         }
         #endregion
     }

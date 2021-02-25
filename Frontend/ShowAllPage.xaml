@@ -9,7 +9,7 @@
       Title="ShowAllPage"  d:DesignWidth="695.62" d:DesignHeight="345.235">
 
     <Grid Background="White" Margin="0">
-        <ListView x:Name="listViewExpenses" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="10,10,0,10" Width="500" FontWeight="Bold">
+        <ListView x:Name="listViewExpenses" HorizontalContentAlignment="Left" Margin="10,10,0,10" FontWeight="Bold" HorizontalAlignment="Left" Width="500" SelectionChanged="listViewExpenses_SelectionChanged">
             <ListView.View>
                 <GridView AllowsColumnReorder="False">
                     <GridViewColumn Header="Id" Width="30" DisplayMemberBinding="{Binding Id}"/>
@@ -22,6 +22,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
+        <Button x:Name="btnEdit" Content="Edit" Margin="0,0,10,60" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="170" FontWeight="Bold" FontStyle="Italic" FontSize="24" Click="ButtonEdit_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" Margin="0,0,10,10" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="170" FontWeight="Bold" FontStyle="Italic" FontSize="24" Click="ButtonDelete_Click"/>
     </Grid>
 </Page>

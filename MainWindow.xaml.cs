@@ -1,5 +1,6 @@
 ﻿using Expense_Tracker.Frontend;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Expense_Tracker
@@ -12,7 +13,7 @@ namespace Expense_Tracker
 
             HideSidePanel();
 
-            frameParent.Content = new ShowAllPage();
+            OpenPage(new ShowAllPage());
         }
 
         #region Side Panel Visibility
@@ -38,6 +39,18 @@ namespace Expense_Tracker
             frameParent.Margin = new Thickness(170, 55, 0, 0);
 
             dockPanelSide.Visibility = Visibility.Visible;
+        }
+        #endregion
+        Page activePage;
+        #region frameParent
+        public void OpenPage(Page newPage)
+        {
+            if (this.activePage != null) {
+                Page temp = this.activePage;
+            }
+
+            this.activePage = newPage;
+            frameParent.Content = this.activePage;
         }
         #endregion
     }

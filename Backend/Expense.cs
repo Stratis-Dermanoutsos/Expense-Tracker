@@ -1,6 +1,6 @@
 ﻿namespace Expense_Tracker.Backend
 {
-    class Expense
+    public class Expense
     {
         #region Member variables
         private uint id;
@@ -21,6 +21,28 @@
         public string Date { get { return this.date; } }
 
         public string Category { get { return this.category; } }
+        public int CategoryIndex { 
+            get { 
+                switch (this.category) {
+                    case "health care":
+                        return 0;
+                    case "food":
+                        return 1;
+                    case "drink":
+                        return 2;
+                    case "entertainment":
+                        return 3;
+                    case "vehicle":
+                        return 4;
+                    case "gift":
+                        return 5;
+                    case "pet":
+                        return 6;
+                    default:
+                        return 7;
+                } 
+            } 
+        }
 
         public short Hour { get { return this.hour; } }
 
