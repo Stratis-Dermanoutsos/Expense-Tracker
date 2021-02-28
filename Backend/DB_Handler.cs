@@ -16,6 +16,7 @@ namespace Expense_Tracker.Backend
             string newName = newExpense.Name;
             double newCost = Math.Round(newExpense.Cost, 2);
             string newDate = newExpense.Date;
+            uint newYear = newExpense.Year;
             string newCategory = newExpense.Category;
             short newHour = newExpense.Hour;
             string details = newExpense.Details;
@@ -24,15 +25,16 @@ namespace Expense_Tracker.Backend
                 using (SQLiteConnection con = new SQLiteConnection(connectionString)) {
                     con.Open();
 
-                    string query = "INSERT INTO expense VALUES (@0, @1, @2, @3, @4, @5, @6);";
+                    string query = "INSERT INTO expense VALUES (@0, @1, @2, @3, @4, @5, @6, @7);";
                     using (SQLiteCommand command = new SQLiteCommand(query, con)) {
                         command.Parameters.AddWithValue("@0", newId);
                         command.Parameters.AddWithValue("@1", newName);
                         command.Parameters.AddWithValue("@2", newCost);
                         command.Parameters.AddWithValue("@3", newDate);
-                        command.Parameters.AddWithValue("@4", newCategory);
-                        command.Parameters.AddWithValue("@5", newHour);
-                        command.Parameters.AddWithValue("@6", details);
+                        command.Parameters.AddWithValue("@4", newYear);
+                        command.Parameters.AddWithValue("@5", newCategory);
+                        command.Parameters.AddWithValue("@6", newHour);
+                        command.Parameters.AddWithValue("@7", details);
 
                         command.ExecuteNonQuery();
                     }
@@ -51,6 +53,7 @@ namespace Expense_Tracker.Backend
             string newName = newExpense.Name;
             double newCost = Math.Round(newExpense.Cost, 2);
             string newDate = newExpense.Date;
+            uint newYear = newExpense.Year;
             string newCategory = newExpense.Category;
             short newHour = newExpense.Hour;
             string details = newExpense.Details;
@@ -59,15 +62,16 @@ namespace Expense_Tracker.Backend
                 using (SQLiteConnection con = new SQLiteConnection(connectionString)) {
                     con.Open();
 
-                    string query = "UPDATE expense SET name=@1, cost=@2, date=@3, category=@4, hour=@5, details=@6 WHERE id=@0;";
+                    string query = "UPDATE expense SET name=@1, cost=@2, date=@3, year=@4, category=@5, hour=@6, details=@7 WHERE id=@0;";
                     using (SQLiteCommand command = new SQLiteCommand(query, con)) {
                         command.Parameters.AddWithValue("@0", newId);
                         command.Parameters.AddWithValue("@1", newName);
                         command.Parameters.AddWithValue("@2", newCost);
                         command.Parameters.AddWithValue("@3", newDate);
-                        command.Parameters.AddWithValue("@4", newCategory);
-                        command.Parameters.AddWithValue("@5", newHour);
-                        command.Parameters.AddWithValue("@6", details);
+                        command.Parameters.AddWithValue("@4", newYear);
+                        command.Parameters.AddWithValue("@5", newCategory);
+                        command.Parameters.AddWithValue("@6", newHour);
+                        command.Parameters.AddWithValue("@7", details);
 
                         command.ExecuteNonQuery();
                     }
@@ -121,9 +125,40 @@ namespace Expense_Tracker.Backend
                                         reader[1].ToString(),
                                         double.Parse(reader[2].ToString()),
                                         reader[3].ToString(),
-                                        reader[4].ToString(),
-                                        short.Parse(reader[5].ToString()),
-                                        reader[6].ToString()));
+                                        uint.Parse(reader[4].ToString()),
+                                        reader[5].ToString(),
+                                        short.Parse(reader[6].ToString()),
+                                        reader[7].ToString()));
+                            }
+                        }
+                    }
+                    con.Dispose();
+                }
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public static void GetAllExpensesFromYear(ListView myList, string year)
+        {
+            try {
+                using (SQLiteConnection con = new SQLiteConnection(connectionString)) {
+                    con.Open();
+
+                    string query = "SELECT * FROM expense WHERE year=@0";
+                    using (SQLiteCommand command = new SQLiteCommand(query, con)) {
+                        command.Parameters.AddWithValue("@1", year);
+                        using (SQLiteDataReader reader = command.ExecuteReader()) {
+                            while (reader.Read()) {
+                                myList.Items.Add(new Expense(
+                                        uint.Parse(reader[0].ToString()),
+                                        reader[1].ToString(),
+                                        double.Parse(reader[2].ToString()),
+                                        reader[3].ToString(),
+                                        uint.Parse(reader[4].ToString()),
+                                        reader[5].ToString(),
+                                        short.Parse(reader[6].ToString()),
+                                        reader[7].ToString()));
                             }
                         }
                     }
@@ -152,9 +187,10 @@ namespace Expense_Tracker.Backend
                                         reader[1].ToString(),
                                         double.Parse(reader[2].ToString()),
                                         reader[3].ToString(),
-                                        reader[4].ToString(),
-                                        short.Parse(reader[5].ToString()),
-                                        reader[6].ToString());
+                                        uint.Parse(reader[4].ToString()),
+                                        reader[5].ToString(),
+                                        short.Parse(reader[6].ToString()),
+                                        reader[7].ToString());
                             }
                         }
                     }

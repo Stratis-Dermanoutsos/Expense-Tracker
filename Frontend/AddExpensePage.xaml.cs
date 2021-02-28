@@ -37,16 +37,16 @@ namespace Expense_Tracker.Frontend
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             try {
-                string date = string.Format("{0}-{1}-{2}",
+                string date = string.Format("{0}-{1}",
                     int.Parse(((ComboBoxItem)comboBoxDay.SelectedItem).Content.ToString()).ToString("00"),
-                    int.Parse(((ComboBoxItem)comboBoxMonth.SelectedItem).Content.ToString()).ToString("00"),
-                    int.Parse(((ComboBoxItem)comboBoxYear.SelectedItem).Content.ToString()).ToString("00"));
+                    int.Parse(((ComboBoxItem)comboBoxMonth.SelectedItem).Content.ToString()).ToString("00"));
 
                 Expense myExpense = new Expense(
                     (this.currentExpense == null) ? DB_Handler.Count : this.currentExpense.Id,
                     textBoxName.Text,
                     float.Parse(textBoxCost.Text),
                     date,
+                    uint.Parse(((ComboBoxItem)comboBoxYear.SelectedItem).Content.ToString()),
                     ((ComboBoxItem)comboBoxCategory.SelectedItem).Content.ToString(),
                     short.Parse(textBoxHour.Text),
                     textBoxDetails.Text

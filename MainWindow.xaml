@@ -7,7 +7,36 @@
         mc:Ignorable="d"
         Title="Expense Tracker" Height="500" MinHeight="500" Width="850" MinWidth="850" WindowStartupLocation="CenterScreen">
     <Grid>
-        <DockPanel x:Name="dockPanelSide" Background="Gray" HorizontalAlignment="Left" LastChildFill="False" Width="170" Margin="0,55,0,0" >
+        <DockPanel x:Name="dockPanelSide" Background="Gray" HorizontalAlignment="Left" LastChildFill="False" Width="170" Margin="0,55,0,0">
+            <Grid x:Name="MenuGrid" Width="170">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Button Content="Add new" Grid.Row="1" Grid.RowSpan="1" FontWeight="Bold" Click="ButtonAdd_Click" />
+                <Button Content="Show all" Grid.Row="3" Grid.RowSpan="1" FontWeight="Bold" Click="ButtonShowAll_Click" />
+                <Button Content="Show year" Grid.Row="5" Grid.RowSpan="1" FontWeight="Bold" />
+                <ComboBox x:Name="comboBoxYear" Grid.Row="7" Grid.RowSpan="1" HorizontalAlignment="Left" Width="120" FontWeight="Bold" FontSize="16" SelectedIndex="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <ComboBoxItem Content="2021" />
+                    <ComboBoxItem Content="2020" />
+                    <ComboBoxItem Content="2019" />
+                </ComboBox>
+                <Button Content="OK" Grid.Row="7" Grid.RowSpan="1" FontWeight="Bold" HorizontalAlignment="Right" Width="40"  Click="ButtonShowYear_Click" />
+            </Grid>
         </DockPanel>
         <DockPanel x:Name="dockPanelTop" Background="DarkGray" LastChildFill="False" Height="55" VerticalAlignment="Top">
             <Rectangle Fill="Transparent" Width="100" MouseEnter="TopLeftRect_MouseEnter" StrokeThickness="0" />

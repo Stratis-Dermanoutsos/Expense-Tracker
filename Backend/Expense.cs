@@ -7,6 +7,7 @@
         private string name;
         private double cost;
         private string date;
+        private uint year;
         private string category;
         private short hour;
         private string details;
@@ -19,6 +20,7 @@
         public double Cost { get { return this.cost; } }
 
         public string Date { get { return this.date; } }
+        public uint Year { get { return this.year; } }
 
         public string Category { get { return this.category; } }
         public int CategoryIndex { 
@@ -56,45 +58,49 @@
         #endregion
 
         #region Constructors
-        public Expense(uint id, string name, double cost, string date, string category, short hour, string details)
+        public Expense(uint id, string name, double cost, string date, uint year, string category, short hour, string details)
         {
             this.id = id;
             this.name = name;
             this.cost = cost;
             this.date = date;
+            this.year = year;
             this.category = category;
             this.hour = hour;
             this.details = details;
         }
 
-        public Expense(uint id, string name, double cost, string date, string category, short hour)
+        public Expense(uint id, string name, double cost, string date, uint year, string category, short hour)
         {
             this.id = id;
             this.name = name;
             this.cost = cost;
             this.date = date;
+            this.year = year;
             this.category = category;
             this.hour = hour;
             this.details = "-";
         }
 
-        public Expense(uint id, string name, double cost, string date, short hour, string details)
+        public Expense(uint id, string name, double cost, string date, uint year, short hour, string details)
         {
             this.id = id;
             this.name = name;
             this.cost = cost;
             this.date = date;
+            this.year = year;
             this.category = "other";
             this.hour = hour;
             this.details = details;
         }
 
-        public Expense(uint id, string name, double cost, string date, short hour)
+        public Expense(uint id, string name, double cost, string date, uint year, short hour)
         {
             this.id = id;
             this.name = name;
             this.cost = cost;
             this.date = date;
+            this.year = year;
             this.category = "other";
             this.hour = hour;
             this.details = "-";
@@ -104,8 +110,8 @@
         #region Methods
         public override string ToString()
         {
-            string myString = string.Format("{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}",
-                this.id, this.name, this.cost, this.date, this.category, this.hour, this.details);
+            string myString = string.Format("{0}\n{1}\n{2}\n{3}-{4}\n{5}\n{6}\n{7}",
+                this.id, this.name, this.cost, this.date, this.year, this.category, this.hour, this.details);
 
             return myString;
         }

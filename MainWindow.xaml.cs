@@ -41,8 +41,9 @@ namespace Expense_Tracker
             dockPanelSide.Visibility = Visibility.Visible;
         }
         #endregion
-        Page activePage;
+
         #region frameParent
+        Page activePage;
         public void OpenPage(Page newPage)
         {
             if (this.activePage != null) {
@@ -51,6 +52,24 @@ namespace Expense_Tracker
 
             this.activePage = newPage;
             frameParent.Content = this.activePage;
+        }
+        #endregion
+
+        #region Side menu buttons
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            OpenPage(new AddExpensePage());
+        }
+
+        private void ButtonShowAll_Click(object sender, RoutedEventArgs e)
+        {
+            OpenPage(new ShowAllPage());
+        }
+
+        private void ButtonShowYear_Click(object sender, RoutedEventArgs e)
+        {
+            string year = ((ComboBoxItem)comboBoxYear.SelectedItem).Content.ToString();
+            MessageBox.Show(year);
         }
         #endregion
     }
