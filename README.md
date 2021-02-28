@@ -16,7 +16,7 @@ Create a simple interface you can use to add and categorize your expenses. Gener
 
 
 ##### DB Example
-| Id | Name | Cost | Date | Category | Hour | Details |
-| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 1 | Coffee | 1.6 | 8-2-2021 | Drink | Morning | - |
-| 2 | Gas | 20 | 31-5-2020 | Car | Evening | small trip |
+| Id | Name | Cost | Date | Year | Category | Hour | Details |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| 1 | Coffee | 1.6 | 8-2 | 2021 | Drink | Morning | - |
+| 2 | Gas | 20 | 31-5 | 2020 | Car | Evening | small trip |
