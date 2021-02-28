@@ -7,7 +7,7 @@ namespace Expense_Tracker.Backend
 {
     class DB_Handler
     {
-        public const string connectionString = "Data Source=..\\..\\Backend\\expenses.db;Version=3;";
+        public const string connectionString = "Data Source=..\\..\\expenses.db;Version=3;";
 
         #region Write to DB
         public static bool SaveExpense(Expense newExpense)
