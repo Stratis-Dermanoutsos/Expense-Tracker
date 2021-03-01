@@ -117,9 +117,9 @@ namespace Expense_Tracker.Backend
                     con.Open();
 
                     string query = "SELECT * FROM expense";
-                    using (SQLiteCommand command = new SQLiteCommand(query, con)) {
-                        using (SQLiteDataReader reader = command.ExecuteReader()) {
-                            while (reader.Read()) {
+                    using (SQLiteCommand command = new SQLiteCommand(query, con))
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                            while (reader.Read())
                                 myList.Items.Add(new Expense(
                                         uint.Parse(reader[0].ToString()),
                                         reader[1].ToString(),
@@ -129,9 +129,7 @@ namespace Expense_Tracker.Backend
                                         reader[5].ToString(),
                                         short.Parse(reader[6].ToString()),
                                         reader[7].ToString()));
-                            }
-                        }
-                    }
+
                     con.Dispose();
                 }
             } catch (Exception ex) {
@@ -148,8 +146,8 @@ namespace Expense_Tracker.Backend
                     string query = "SELECT * FROM expense WHERE year=@0";
                     using (SQLiteCommand command = new SQLiteCommand(query, con)) {
                         command.Parameters.AddWithValue("@0", year);
-                        using (SQLiteDataReader reader = command.ExecuteReader()) {
-                            while (reader.Read()) {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                            while (reader.Read())
                                 myList.Items.Add(new Expense(
                                         uint.Parse(reader[0].ToString()),
                                         reader[1].ToString(),
@@ -159,8 +157,6 @@ namespace Expense_Tracker.Backend
                                         reader[5].ToString(),
                                         short.Parse(reader[6].ToString()),
                                         reader[7].ToString()));
-                            }
-                        }
                     }
                     con.Dispose();
                 }
@@ -180,8 +176,8 @@ namespace Expense_Tracker.Backend
                     string query = "SELECT * FROM expense WHERE Id=@1";
                     using (SQLiteCommand command = new SQLiteCommand(query, con)) {
                         command.Parameters.AddWithValue("@1", id);
-                        using (SQLiteDataReader reader = command.ExecuteReader()) {
-                            while (reader.Read()) {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                            while (reader.Read())
                                 myExpense = new Expense(
                                         uint.Parse(reader[0].ToString()),
                                         reader[1].ToString(),
@@ -191,8 +187,6 @@ namespace Expense_Tracker.Backend
                                         reader[5].ToString(),
                                         short.Parse(reader[6].ToString()),
                                         reader[7].ToString());
-                            }
-                        }
                     }
                     con.Dispose();
 
@@ -213,13 +207,11 @@ namespace Expense_Tracker.Backend
                     con.Open();
 
                     string query = "SELECT cost FROM expense";
-                    using (SQLiteCommand command = new SQLiteCommand(query, con)) {
-                        using (SQLiteDataReader reader = command.ExecuteReader()) {
-                            while (reader.Read()) {
+                    using (SQLiteCommand command = new SQLiteCommand(query, con))
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                            while (reader.Read())
                                 result += double.Parse(reader[0].ToString());
-                            }
-                        }
-                    }
+
                     con.Dispose();
                 }
                 return result;
@@ -239,11 +231,9 @@ namespace Expense_Tracker.Backend
                     string query = "SELECT cost FROM expense WHERE year=@0";
                     using (SQLiteCommand command = new SQLiteCommand(query, con)) {
                         command.Parameters.AddWithValue("@0", year);
-                        using (SQLiteDataReader reader = command.ExecuteReader()) {
-                            while (reader.Read()) {
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                            while (reader.Read())
                                 result += double.Parse(reader[0].ToString());
-                            }
-                        }
                     }
                     con.Dispose();
                 }
