@@ -42,7 +42,7 @@ namespace Expense_Tracker
         }
         #endregion
 
-        #region frameParent
+        #region frameParent - TO BE REMASTERED
         Page activePage;
         public void OpenPage(Page newPage)
         {
