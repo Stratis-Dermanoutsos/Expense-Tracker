@@ -139,7 +139,7 @@ namespace Expense_Tracker.Backend
             }
         }
 
-        public static void GetAllExpensesFromYear(ListView myList, string year)
+        public static void GetAllExpenses(ListView myList, string year)
         {
             try {
                 using (SQLiteConnection con = new SQLiteConnection(connectionString)) {
@@ -147,7 +147,7 @@ namespace Expense_Tracker.Backend
 
                     string query = "SELECT * FROM expense WHERE year=@0";
                     using (SQLiteCommand command = new SQLiteCommand(query, con)) {
-                        command.Parameters.AddWithValue("@1", year);
+                        command.Parameters.AddWithValue("@0", year);
                         using (SQLiteDataReader reader = command.ExecuteReader()) {
                             while (reader.Read()) {
                                 myList.Items.Add(new Expense(
@@ -202,6 +202,55 @@ namespace Expense_Tracker.Backend
                 MessageBox.Show(ex.Message);
 
                 return null;
+            }
+        }
+
+        public static double GetTotalCost()
+        {
+            try {
+                double result = 0;
+                using (SQLiteConnection con = new SQLiteConnection(connectionString)) {
+                    con.Open();
+
+                    string query = "SELECT cost FROM expense";
+                    using (SQLiteCommand command = new SQLiteCommand(query, con)) {
+                        using (SQLiteDataReader reader = command.ExecuteReader()) {
+                            while (reader.Read()) {
+                                result += double.Parse(reader[0].ToString());
+                            }
+                        }
+                    }
+                    con.Dispose();
+                }
+                return result;
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+                return -1;
+            }
+        }
+
+        public static double GetTotalCost(string year)
+        {
+            try {
+                double result = 0;
+                using (SQLiteConnection con = new SQLiteConnection(connectionString)) {
+                    con.Open();
+
+                    string query = "SELECT cost FROM expense WHERE year=@0";
+                    using (SQLiteCommand command = new SQLiteCommand(query, con)) {
+                        command.Parameters.AddWithValue("@0", year);
+                        using (SQLiteDataReader reader = command.ExecuteReader()) {
+                            while (reader.Read()) {
+                                result += double.Parse(reader[0].ToString());
+                            }
+                        }
+                    }
+                    con.Dispose();
+                }
+                return result;
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+                return -1;
             }
         }
         #endregion

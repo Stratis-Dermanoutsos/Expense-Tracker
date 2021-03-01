@@ -9,12 +9,27 @@ namespace Expense_Tracker.Frontend
     /// </summary>
     public partial class ShowAllPage : Page
     {
-
         public ShowAllPage()
         {
             InitializeComponent();
 
             DB_Handler.GetAllExpenses(this.listViewExpenses);
+
+            double totalCost = DB_Handler.GetTotalCost();
+            labelTotal.Content = totalCost.ToString("0.##");
+
+            this.btnEdit.Visibility = Visibility.Hidden;
+            this.btnDelete.Visibility = Visibility.Hidden;
+        }
+
+        public ShowAllPage(string year)
+        {
+            InitializeComponent();
+
+            DB_Handler.GetAllExpenses(this.listViewExpenses, year);
+
+            double totalCost = DB_Handler.GetTotalCost(year);
+            labelTotal.Content = totalCost.ToString("0.##");
 
             this.btnEdit.Visibility = Visibility.Hidden;
             this.btnDelete.Visibility = Visibility.Hidden;

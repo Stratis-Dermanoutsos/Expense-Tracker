@@ -69,7 +69,7 @@ namespace Expense_Tracker
         private void ButtonShowYear_Click(object sender, RoutedEventArgs e)
         {
             string year = ((ComboBoxItem)comboBoxYear.SelectedItem).Content.ToString();
-            MessageBox.Show(year);
+            OpenPage(new ShowAllPage(year));
         }
         #endregion
     }
