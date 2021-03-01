@@ -12,7 +12,7 @@ Create a simple interface you can use to add and categorize your expenses. Gener
   - [ ] Create the database for the user automatically
   - [ ] Have many sorting options when displaying the expenses
   - [ ] Fix page stacking problem
-  - [ ] Add "YearTotalPage"
+  - [x] Add "YearTotalPage"
 
 
 ##### DB Example
