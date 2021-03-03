@@ -50,8 +50,12 @@ namespace Expense_Tracker
                 Page temp = this.activePage;
             }
 
+            this.frameParent.Content = null;
+
             this.activePage = newPage;
-            frameParent.Content = this.activePage;
+            this.frameParent.Content = this.activePage;
+
+            while (this.frameParent.NavigationService.RemoveBackEntry() != null);
         }
         #endregion
 

@@ -41,6 +41,6 @@
         <DockPanel x:Name="dockPanelTop" Background="DarkGray" LastChildFill="False" Height="55" VerticalAlignment="Top">
             <Rectangle Fill="Transparent" Width="100" MouseEnter="TopLeftRect_MouseEnter" StrokeThickness="0" />
         </DockPanel>
-        <Frame x:Name="frameParent" Background="AliceBlue" Margin="170,55,0,0" MouseEnter="framePanelParent_MouseEnter"/>
+        <Frame x:Name="frameParent" Background="AliceBlue" Margin="170,55,0,0" MouseEnter="framePanelParent_MouseEnter" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

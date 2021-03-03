@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Expense_Tracker.Frontend"
       mc:Ignorable="d" 
       Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0"
-      Title="ShowAllPage"  d:DesignWidth="695.62" d:DesignHeight="345.235">
+      Title="ShowAllPage"  d:DesignWidth="695.62" d:DesignHeight="345.235" ShowsNavigationUI="False">
 
     <Grid Background="White" Margin="0">
         <ListView x:Name="listViewExpenses" HorizontalContentAlignment="Left" Margin="10,10,0,10" FontWeight="Bold" HorizontalAlignment="Left" Width="500" SelectionChanged="listViewExpenses_SelectionChanged">
