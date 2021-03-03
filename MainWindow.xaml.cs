@@ -32,6 +32,10 @@ namespace Expense_Tracker
             dockPanelSide.Visibility = Visibility.Collapsed;
 
             frameParent.Margin = new Thickness(0, 55, 0, 0);
+
+            /* Hide the important grid row and show the backup - SCALING */
+            this.MenuGrid.RowDefinitions[7].Height = new GridLength(0);
+            this.MenuGrid.RowDefinitions[13].Height = new GridLength(20, GridUnitType.Star);
         }
 
         private void ShowSidePanel()
@@ -68,6 +72,13 @@ namespace Expense_Tracker
         private void ButtonShowAll_Click(object sender, RoutedEventArgs e)
         {
             OpenPage(new ShowAllPage());
+        }
+
+        private void ButtonShowYearButton_Click(object sender, RoutedEventArgs e)
+        {
+            /* Hide backup grid row and show the one we want - SCALING */
+            this.MenuGrid.RowDefinitions[13].Height = new GridLength(0);
+            this.MenuGrid.RowDefinitions[7].Height = new GridLength(20, GridUnitType.Star);
         }
 
         private void ButtonShowYear_Click(object sender, RoutedEventArgs e)
