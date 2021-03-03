@@ -29,7 +29,7 @@
                 </Grid.RowDefinitions>
                 <Button Content="Add new" Grid.Row="1" Grid.RowSpan="1" FontWeight="Bold" Click="ButtonAdd_Click" />
                 <Button Content="Show all" Grid.Row="3" Grid.RowSpan="1" FontWeight="Bold" Click="ButtonShowAll_Click" />
-                <Button Content="Show year" Grid.Row="5" Grid.RowSpan="1" FontWeight="Bold" />
+                <Button Content="Show year" Grid.Row="5" Grid.RowSpan="1" FontWeight="Bold" Click="ButtonShowYearButton_Click" />
                 <ComboBox x:Name="comboBoxYear" Grid.Row="7" Grid.RowSpan="1" HorizontalAlignment="Left" Width="120" FontWeight="Bold" FontSize="16" SelectedIndex="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                     <ComboBoxItem Content="2021" />
                     <ComboBoxItem Content="2020" />
