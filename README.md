@@ -11,7 +11,7 @@ Create a simple interface you can use to add and categorize your expenses. Gener
   - [x] Save the info of each expense
   - [ ] Create the database for the user automatically
   - [ ] Have many sorting options when displaying the expenses
-  - [ ] Fix page stacking problem
+  - [x] Fix page stacking problem
   - [x] Add "YearTotalPage"
 
 
