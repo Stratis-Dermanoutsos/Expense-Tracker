@@ -6,13 +6,11 @@ Create a simple interface you can use to add and categorize your expenses. Gener
 
 
 ### TO-DO list
-  - [x] Decide on what framework/library to use - WPF for native, ASP.NET for web, Xamarin for mobile (chose WPF)
-  - [x] Create responsive UI
-  - [x] Save the info of each expense
-  - [ ] Create the database for the user automatically
-  - [ ] Have many sorting options when displaying the expenses
-  - [x] Fix page stacking problem
-  - [x] Add "YearTotalPage"
+  - [x] ~~Decide on what framework/library to use - WPF for native, ASP.NET for web, Xamarin for mobile (chose WPF)~~
+  - [x] ~~Create responsive UI~~
+  - [x] ~~Save the info of each expense~~
+  - [x] ~~Fix page stacking problem~~
+  - [x] ~~Add "YearTotalPage"~~
 
 
 ##### DB Example
